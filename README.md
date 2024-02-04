@@ -1,0 +1,1 @@
+# corosol-slider-with-topright-nav
