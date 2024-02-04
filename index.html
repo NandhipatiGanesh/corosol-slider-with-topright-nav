@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Page Title</title>
+<style>
+.carousel-container {
+  position: relative;
+  overflow: hidden;
+}
+
+.carousel {
+  display: flex;
+  transition: transform 0.5s ease;
+}
+
+.slide {
+  flex: 0 0 33.33%; /* Display three slides at a time */
+  /* Add styling for your slides */
+}
+
+.prev, .next {
+  position: absolute;
+  top: 10px;
+  right: 60px; /* Adjusted position for better visibility */
+  font-size: 30px;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.5); /* Added background color for better visibility */
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+  z-index: 1;
+}
+
+.next {
+  right: 10px;
+}
+
+.prev:hover, .next:hover {
+  background-color: rgba(0, 0, 0, 0.7); /* Darken background color on hover */
+}
+
+</style>
+</head>
+<body>
+
+<div class="carousel-container">
+  <div class="carousel">
+    <div class="slide">Slide 1</div>
+    <div class="slide">Slide 2</div>
+    <div class="slide">Slide 3</div>
+    <!-- Add more slides as needed -->
+     <div class="slide">Slide 4</div>
+    <div class="slide">Slide 5</div>
+    <div class="slide">Slide 6</div>
+     <div class="slide">Slide 7</div>
+    <div class="slide">Slide 8</div>
+    <div class="slide">Slide 9</div>
+  </div>
+  <button class="prev">&#10094;</button>
+  <button class="next">&#10095;</button>
+</div>
+
+<script>
+const carousel = document.querySelector('.carousel');
+const prevBtn = document.querySelector('.prev');
+const nextBtn = document.querySelector('.next');
+const slides = document.querySelectorAll('.slide');
+
+let currentIndex = 0;
+
+nextBtn.addEventListener('click', () => {
+  currentIndex = Math.min(currentIndex + 1, slides.length - 3); // Adjusted to prevent moving beyond the slides
+  updateCarousel();
+});
+
+prevBtn.addEventListener('click', () => {
+  currentIndex = Math.max(currentIndex - 1, 0); // Adjusted to prevent moving beyond the slides
+  updateCarousel();
+});
+
+function updateCarousel() {
+  const offset = -currentIndex * 33.33; // Adjusted for three slides
+  carousel.style.transform = `translateX(${offset}%)`;
+}
+
+</script>
+</body>
+</html>
