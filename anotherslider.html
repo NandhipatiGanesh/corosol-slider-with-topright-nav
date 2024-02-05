@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<style>
+.carousel-container {
+  position: relative;
+  overflow: hidden;
+  margin-top:50px;
+}
+
+.carousel {
+  display: flex;
+  transition: transform 0.5s ease;
+}
+
+.slide {
+  flex: 0 0 100%; /* Display one slide at a time, taking up the entire width */
+  /* Add styling for your slides */
+}
+
+.prev {
+  position: absolute;
+  top: 10px; /* Adjusted position for top */
+  right: 10px; /* Adjusted position for right */
+  font-size: 20px;
+  width:60px;
+  height:60px;
+  color: black;
+  background-color: white; /* Added background color for better visibility */
+  border: 1px solid #EFF1F6;
+  box-shadow:0px 2px 12px 0px rgba(30.999999999999996, 45.99999999999998, 83.99999999999999, 0.06);
+  border-radius:50%;
+  cursor: pointer;
+  padding: 10px;
+  z-index: 1;
+}
+
+.next {
+ position: absolute;
+  top: 10px;
+  right: 60px;
+  font-size: 20px;
+  width:60px;
+  height:60px;
+  color: black;
+  background-color: white; /* Added background color for better visibility */
+  border: 1px solid #EFF1F6;
+  box-shadow:0px 2px 12px 0px rgba(30.999999999999996, 45.99999999999998, 83.99999999999999, 0.06);
+  border-radius:50%;
+  cursor: pointer;
+  padding: 10px;
+  z-index: 1;
+  margin-right:20px;
+}
+
+.prev:hover, .next:hover {
+  background-color: #FF5B5D;
+  transition: transform 0.5s ease;
+  font-size:30px;
+  /* Darken background color on hover */
+}
+ .section-h {
+            border-radius:40px;
+            padding: 1rem;
+            margin: 1rem;
+            min-width: 100%;
+            height: auto;
+            scroll-snap-align: start;
+            box-shadow: 0 3px 30px rgba(0, 0, 0, 0.02);
+            background-color: white;
+            position: relative;
+        }
+.nav-buttons {
+  display: flex;
+  flex-direction: row-reverse; /* Row-reverse layout */
+  margin-bottom:100px;
+  gap:10px;
+}
+</style>
+</head>
+<body>
+
+<div class="carousel-container">
+  <div class="carousel">
+    <div class="slide">
+      <section class="section-h">
+            <h3>Send brief</h3>
+            <p>Please provide us with a comprehensive project brief, including the necessary documentation requirements, to initiate the estimation process and commence the project.
+
+</p>
+        </section></div>
+    <div class="slide"><section class="section-h">
+            <h3>Stay in touch</h3>
+            <p>Please assess the initial findings and share your feedback to guide our further actions, whether it involves proceeding with the current course or implementing corrections.
+
+</p>
+        </section></div>
+    <div class="slide">
+    <section class="section-h">
+            <h3>Approve</h3>
+            <p>Give your approval for the draft of the services you find satisfactory and wish for us to proceed with delivering.
+
+</p>
+        </section></div>
+    <!-- Add more slides as needed -->
+     <div class="slide"> <section class="section-h">
+            <h3>See online</h3>
+            <p>Experience Superior Service Delivery Online: Receive Impeccable Quality On Time and Share Your Feedback If Satisfied.
+
+</p>
+        </section></div>
+
+  </div>
+  </div>
+  <div class="nav-buttons"> 
+    <button class="next"> &#10094;</button>
+    <button class="prev">&#10095;</button>
+  </div>
+
+
+<script>
+const carousel = document.querySelector('.carousel');
+const prevBtn = document.querySelector('.prev');
+const nextBtn = document.querySelector('.next');
+const slides = document.querySelectorAll('.slide');
+
+let currentIndex = 0;
+
+nextBtn.addEventListener('click', () => {
+  currentIndex = Math.min(currentIndex - 1, slides.length - 1); // Adjusted to prevent moving beyond the slides
+  updateCarousel();
+});
+
+prevBtn.addEventListener('click', () => {
+  currentIndex = Math.max(currentIndex + 1, 0); // Adjusted to prevent moving beyond the slides
+  updateCarousel();
+});
+
+function updateCarousel() {
+  const offset = -currentIndex * 100; // Adjusted for one slide
+  carousel.style.transform = `translateX(${offset}%)`;
+}
+
+</script>
+</body>
+</html>
